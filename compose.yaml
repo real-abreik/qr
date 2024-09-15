@@ -1,0 +1,42 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: qr-web
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.qr.entrypoints=http"
+      - "traefik.http.routers.qr.rule=Host(`qr.abreik.com`)"
+      - "traefik.http.middlewares.qr-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.qr.middlewares=qr-https-redirect"
+      - "traefik.http.routers.qr-secure.entrypoints=https"
+      - "traefik.http.routers.qr-secure.rule=Host(`qr.abreik.com`)"
+      - "traefik.http.routers.qr-secure.tls=true"
+      - "traefik.http.routers.qr-secure.service=qr"
+      - "traefik.http.services.qr.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy"
+    networks:
+      proxy:
+      qr:
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    links:
+      - php-fpm
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    build: .
+    container_name: qr-php
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      qr:
+
+networks:
+  proxy:
+    external: true
+  qr:
