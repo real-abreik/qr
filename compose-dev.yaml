@@ -1,0 +1,29 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: qr-web
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    networks:
+      qr:
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    links:
+      - php-fpm
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    build: .
+    container_name: qr-php
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      qr:
+
+networks:
+  qr:

@@ -1,1 +1,9 @@
-src/node_modules
+src/node_modules/
+src/vendor/
+.env
+*.tmp
+*.temp
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Quick Links</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">About</a>
+                  </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Pricing</a>
+              </li>
+            </ul>
+            <a class="nav-link active" href="#">Login</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- login modal -->
+      <div class="container">
+        <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
+          Login
+        </button>  
+      </div>
+      
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-title text-center">
+                <h4>Login</h4>
+              </div>
+              <div class="d-flex flex-column text-center">
+                <form>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="loginEmail"placeholder="Your email address...">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="loginPass" placeholder="Your password...">
+                  </div>
+                  <button type="button" class="btn btn-info btn-block btn-round">Login</button>
+                </form>
+                
+                <div class="text-center text-muted delimiter">or use a social network</div>
+                <div class="d-flex justify-content-center social-buttons">
+                  <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                    <i class="fab fa-linkedin"></i>
+                  </button>
+                </di>
+              </div>
+            </div>
+          </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <div class="signup-section">Not a member yet? <a href="#" class="text-info"> Sign Up</a>.</div>
+            </div>
+        </div>
+      </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
